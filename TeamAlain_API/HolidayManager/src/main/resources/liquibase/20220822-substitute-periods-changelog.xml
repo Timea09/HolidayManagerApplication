@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20220822-substitute-periods-changelog-001" author="bcezar">
+        <createTable tableName="SUBSTITUTE_PERIODS">
+            <column name="PERIOD_ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="SUBSTITUTE_ID" type="BIGINT">
+
+            </column>
+            <column name="TEAM_ID" type="BIGINT">
+
+            </column>
+            <column name="START_DATE" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="END_DATE" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="SUBSTITUTE_PERIODS" baseColumnNames="SUBSTITUTE_ID"
+                                 constraintName="FK_SUBSTITUTE_USER_ID"
+                                 referencedTableName="USERS"
+                                 referencedColumnNames="USER_ID"/>
+
+        <addForeignKeyConstraint baseTableName="SUBSTITUTE_PERIODS" baseColumnNames="TEAM_ID" constraintName="FK_SUBSTITUTE_TEAM_ID" referencedTableName="TEAMS"
+                                 referencedColumnNames="TEAM_ID"/>
+
+    </changeSet>
+
+</databaseChangeLog>

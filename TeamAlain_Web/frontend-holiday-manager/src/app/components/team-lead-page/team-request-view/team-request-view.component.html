@@ -1,0 +1,58 @@
+<form [formGroup]="formGroup">
+
+  <div class="wrapper-form-field">
+    <mat-form-field class="holiday-type-field form-field" appearance="fill">
+      <mat-label>Holiday type</mat-label>
+      <input matInput formControlName="holidayType" readonly [(ngModel)]="shownRequest.type">
+    </mat-form-field>
+  </div>
+
+  <div class="wrapper-form-field">
+    <mat-form-field class="start-date-field form-field" appearance="fill">
+      <mat-label>Start date</mat-label>
+      <input matInput formControlName="startDate" readonly [(ngModel)]="shownRequest.startDate">
+    </mat-form-field>
+
+    <mat-form-field class="end-date-field form-field" appearance="fill">
+      <mat-label>End date</mat-label>
+      <input matInput formControlName="endDate" readonly [(ngModel)]="shownRequest.endDate">
+    </mat-form-field>
+  </div>
+
+  <div class="marginless-wrapper">
+    <mat-form-field class="substitute-field form-field" appearance="fill"
+                    *ngIf='shownRequest?.type === "Rest Holiday" || shownRequest?.type === "Special Holiday"'>
+      <mat-label>Substitute</mat-label>
+      <input matInput formControlName="substitute" readonly [(ngModel)]="shownRequest.substitute">
+    </mat-form-field>
+  </div>
+
+  <div class="marginless-wrapper">
+    <mat-form-field class="document-field form-field" appearance="fill"
+                    *ngIf="shownRequest?.type === 'Special Holiday'">
+      <mat-label>Document</mat-label>
+
+      <ngx-mat-file-input formControlName="document" placeholder="Document" *ngIf="this.shownRequest != null" [valuePlaceholder]="this.shownRequest.documentName"></ngx-mat-file-input>
+      <ngx-mat-file-input formControlName="document" placeholder="Document" *ngIf="this.shownRequest == null" ></ngx-mat-file-input>
+      <button mat-icon-button matSuffix (click)="downloadFile()" style="">
+        <mat-icon> vertical_align_bottom</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div class="wrapper-form-field">
+    <mat-form-field class="extra-info-field form-field" appearance="fill">
+      <mat-label>Extra Info</mat-label>
+      <textarea matInput formControlName="extraInfo" placeholder="Extra Info" [(ngModel)]="shownRequest.extraInfo"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="wrapper-footer" *ngIf="shownRequest.status === 'PENDING'">
+    <div class="wrapper-btn-same-line">
+      <button mat-button class="btn approve-btn" (click)="setRequestStatus('APPROVED')">Approve</button>
+      <button mat-button class="btn decline-btn" (click)="setRequestStatus('DECLINED')">Decline</button>
+    </div>
+    <button mat-button class="btn extra-info-btn" (click)="setRequestStatus('EXTRA_INFO')">Ask for Extra Info</button>
+  </div>
+
+</form>

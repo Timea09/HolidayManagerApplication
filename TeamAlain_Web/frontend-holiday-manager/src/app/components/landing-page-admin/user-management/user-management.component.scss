@@ -1,0 +1,44 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import 'src/variables';
+
+@media(max-width:768px)
+{
+
+    h1
+    {
+
+        margin-left: 10px;
+        margin-bottom: 20px;
+        padding: 20px;
+        text-align: center;
+        font-size: 27px;
+
+
+    }
+
+
+    .mat-list {
+      margin: 20px;
+      overflow: auto;
+      max-height: 250px;
+      }
+
+      .mat-row .mat-cell {
+        border-bottom: 1px solid transparent;
+        border-top: 1px solid transparent;
+        border-color: grey;
+        cursor: pointer;
+
+      }
+  ::ng-deep .mat-simple-snackbar {
+
+    .mat-button-wrapper {
+
+      color: $mhp-green;
+    }
+  }
+
+
+
+}

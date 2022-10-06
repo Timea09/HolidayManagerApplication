@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet  id="20220806-users-001" author="tbal">
+
+        <renameColumn
+                newColumnName="user_type"
+                oldColumnName="role"
+                schemaName="public"
+                tableName="users"
+        />
+
+        <dropNotNullConstraint tableName="users" columnName="user_type"/>
+        <addDefaultValue columnName="user_type"
+                         defaultValue="EMPLOYEE"
+                         tableName="users" columnDataType="varchar(255)"/>
+    </changeSet>
+</databaseChangeLog>

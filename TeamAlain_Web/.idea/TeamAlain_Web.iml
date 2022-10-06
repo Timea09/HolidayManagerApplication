@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/frontend-holiday-manager/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend-holiday-manager/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend-holiday-manager/.angular/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend-holiday-manager/.idea" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

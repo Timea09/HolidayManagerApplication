@@ -1,0 +1,48 @@
+<form class="first-form" [formGroup]="teamFormGroup" (ngSubmit)="updateOrCreateTeam()">
+  <mat-form-field appearance="outline">
+    <mat-label>Team Name</mat-label>
+    <input matInput placeholder="Enter the name of the team" formControlName="teamName">
+    <mat-hint>Type the name of the team</mat-hint>
+  </mat-form-field>
+
+  <form>
+    <mat-form-field appearance="legacy">
+      <mat-label>Search employee</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='addMemberToList($event.option.value)'>
+        <mat-option *ngFor="let user of filteredUsersWithNoTeam | async" [value]="user">
+          <mat-icon>person_add</mat-icon>
+          {{user.firstName+" "+user.lastName}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+
+  <mat-list>
+    <mat-list-item *ngIf="teamMembers.length>0">Members:<mat-divider></mat-divider></mat-list-item>
+    <mat-list-item *ngIf="this.teamFormGroup.value.teamName != null && teamMembers.length==0">This team has no members yet.</mat-list-item>
+    <mat-list-item *ngFor="let member of teamMembers">
+      <p mat-line>
+        <span> {{member.firstName+" "+member.lastName}} </span>
+      </p>
+      <button mat-icon-button type="button" (click)="removeFromMemberList(member)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-form-field *ngIf="teamMembers.length>0" appearance="legacy">
+    <mat-label>Select a team leader</mat-label>
+    <mat-select [(value)]="this.selectedTeamLeader">
+      <mat-option *ngFor="let member of teamMembers" [value]="member">{{member.firstName+" "+member.lastName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="accent" *ngIf="this.teamSelected" type="submit">Update Team</button>
+  <button mat-raised-button color="accent" *ngIf="!this.teamSelected" type="submit">Add Team</button>
+
+
+</form>

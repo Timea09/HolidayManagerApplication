@@ -1,0 +1,52 @@
+@import "../../../_variables.scss";
+
+nav{
+  background-color: #e1e1e1;;
+  box-shadow: 0 0 5px 0 black;
+  height: 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: Verdana, sans-serif;
+  span{
+    font-size: 12px;
+  }
+
+}
+
+mat-icon{
+  color: black;
+  vertical-align: middle;
+}
+
+
+
+::ng-deep .mat-menu-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .mat-menu-panel {
+  min-height: fit-content !important;
+}
+
+.text-wrap {
+
+  text-align: left;
+  line-height: 1.25rem;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+
+.notification-btn {
+
+  padding: 8px 16px;
+  border: #FFFFFF solid 1px;
+  background-color: #ffffff;
+}
+
+.notification-btn:nth-of-type(2n){
+
+  background-color: #eeeeee;
+}

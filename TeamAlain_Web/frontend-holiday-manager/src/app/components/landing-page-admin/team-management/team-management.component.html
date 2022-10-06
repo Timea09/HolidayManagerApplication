@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<header><h1>Team Administration</h1></header>
+
+<mat-list >
+  <mat-list-item *ngFor="let team of teams" >
+
+    <p mat-line> <span>{{team?.teamName}}</span></p>
+    <div>
+      <button mat-icon-button (click)="seeTeam(team)">
+        <mat-icon *ngIf="team!=null && !team.clicked">visibility_on</mat-icon>
+        <mat-icon *ngIf="team!=null && team.clicked">visibility_off</mat-icon>
+
+      </button>
+      <button mat-icon-button  (click)="deleteTeam(team!)">
+        <mat-icon >delete</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+
+
+<app-add-team (clickCreate)='createTeam($event)' [teamInfo]=this.teamSelected [eventUsersWithNoTeamChanged]="this.eventUsersWithNoTeamChanged" ></app-add-team>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet  id="insert-into-users-changelog-001" author="dmihaila">
+        <insert
+                schemaName="public"
+                tableName="users">
+            <column  name="EMAIL"  value="admin@mhp.com"/>
+            <column  name="FIRST_NAME"  value="Admin"/>
+            <column  name="LAST_NAME"  value="Admin"/>
+            <column  name="PASSWORD"  value="$2a$12$l6J4fUO4C6nei.UdFykuWu7aAHVJdX4bIJrkispgX2LjyGyq2ENVy"/>
+            <column  name="USER_TYPE"  value="ADMIN"/>
+            <column  name="DEPARTMENT"  value="JAVA"/>
+            <column  name="DAYS_LEFT"  value="26"/>
+            <column  name="TEAM_ID"  value="NULL"/>
+            <column  name="ROLE"  value="DEVELOPER"/>
+
+        </insert>
+        <insert
+            schemaName="public"
+            tableName="users">
+        <column  name="EMAIL"  value="daria.mihaila@mhp.com"/>
+        <column  name="FIRST_NAME"  value="Daria"/>
+        <column  name="LAST_NAME"  value="Mihaila"/>
+        <column  name="PASSWORD"  value="$2a$12$ELMhz7beGGdYG4ZMhp7B5OfFVNtGi3NM50AkbauNsWXzsYRccan2a"/>
+        <column  name="USER_TYPE"  value="EMPLOYEE"/>
+        <column  name="DEPARTMENT"  value="JAVA"/>
+        <column  name="DAYS_LEFT"  value="26"/>
+        <column  name="TEAM_ID"  value="NULL"/>
+        <column  name="ROLE"  value="DEVELOPER"/>
+
+    </insert>
+
+
+        <insert
+                schemaName="public"
+                tableName="users">
+            <column  name="EMAIL"  value="sebastian.curila@mhp.com"/>
+            <column  name="FIRST_NAME"  value="Sebastian"/>
+            <column  name="LAST_NAME"  value="Curila"/>
+            <column  name="PASSWORD"  value="$2a$12$ELMhz7beGGdYG4ZMhp7B5OfFVNtGi3NM50AkbauNsWXzsYRccan2a"/>
+            <column  name="USER_TYPE"  value="EMPLOYEE"/>
+            <column  name="DEPARTMENT"  value="JAVA"/>
+            <column  name="DAYS_LEFT"  value="26"/>
+            <column  name="TEAM_ID"  value="NULL"/>
+            <column  name="ROLE"  value="TESTER"/>
+        </insert>
+        <insert
+                schemaName="public"
+                tableName="users">
+            <column  name="EMAIL"  value="timea-ildiko.nilgesz@mhp.com"/>
+            <column  name="FIRST_NAME"  value="Timea-Ildiko"/>
+            <column  name="LAST_NAME"  value="Niglesz"/>
+            <column  name="PASSWORD"  value="$2a$12$ELMhz7beGGdYG4ZMhp7B5OfFVNtGi3NM50AkbauNsWXzsYRccan2a"/>
+            <column  name="USER_TYPE"  value="EMPLOYEE"/>
+            <column  name="DEPARTMENT"  value="JAVA"/>
+            <column  name="DAYS_LEFT"  value="26"/>
+            <column  name="TEAM_ID"  value="NULL"/>
+            <column  name="ROLE"  value="TESTER"/>
+        </insert>
+
+
+    </changeSet>
+</databaseChangeLog>

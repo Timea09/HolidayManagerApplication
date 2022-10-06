@@ -1,0 +1,23 @@
+  <img src="assets/images/login_image.png" alt="">
+
+  <form [formGroup]="userCredentialsFormGroup" (ngSubmit)="loginUser()">
+    <div class="form-wrapper">
+      <mat-form-field appearance="outline">
+        <mat-label>E-Mail</mat-label>
+        <input matInput placeholder="Enter your e-mail" formControlName="email">
+        <mat-error *ngIf="this.userCredentialsFormGroup.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+        <mat-hint>Type your e-mail</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" formControlName="password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="this.userCredentialsFormGroup.controls['password'].invalid">{{getPasswordErrorMessage()}}</mat-error>
+        <mat-hint>Type your password</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="button-wrapper">
+      <button mat-raised-button type="submit">Log In</button>
+    </div>
+  </form>

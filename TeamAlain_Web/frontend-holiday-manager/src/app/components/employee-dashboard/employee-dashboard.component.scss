@@ -1,0 +1,35 @@
+@import 'src/variables';
+
+header {
+
+    height: 100px;
+}
+
+main {
+
+    padding: 5px 15px;
+}
+
+footer {
+
+    padding: 10px 15px 20px 15px;
+
+    a {
+
+        width: 100%;
+        background-color: $light-gray;
+    }
+}
+
+#arrow-up {
+    display: none;
+}
+
+::ng-deep .mat-simple-snackbar {
+
+  .mat-button-wrapper {
+
+    color: $mhp-green;
+  }
+}
+

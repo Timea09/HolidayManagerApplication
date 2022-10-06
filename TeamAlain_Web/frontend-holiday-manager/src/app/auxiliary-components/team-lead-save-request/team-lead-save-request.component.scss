@@ -1,0 +1,118 @@
+@import "src/variables";
+
+.wrapper-form-field {
+
+  position: relative;
+  top: 10px;
+
+  display: flex;
+
+  margin-bottom: 10px;
+}
+
+.marginless-wrapper {
+
+  position: relative;
+  top: 10px;
+
+  display: flex;
+}
+
+.create-btn {
+
+  background-color: $mhp-green;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 12px);
+  text-align: center;
+  margin: 6px;
+}
+
+.cancel-btn {
+
+  background-color: $red-primary;
+  display: flex;
+  justify-content: center;
+  min-width: calc(50% - 12px);
+  margin: 0 0 6px 6px;
+}
+
+.update-btn {
+
+  background-color: $mhp-yellow;
+  display: flex;
+  justify-content: center;
+  min-width: calc(50% - 12px);
+  margin: 0 0 6px 6px;
+}
+
+.hr-btn {
+
+  background-color: $mhp-royal-blue;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 12px);
+  text-align: center;
+  margin: 0 6px 6px 6px;
+}
+
+.btn{
+  color:white;
+  //font-weight: bold;
+}
+
+.wrapper-btn-same-line{
+  display: flex;
+  margin: 6px 6px 0 0;
+}
+
+.holiday-type-field {
+
+  width: 100%;
+}
+
+.start-date-field {
+
+  margin-right: 6px;
+  width: calc(50% - 6px);
+}
+
+.end-date-field {
+
+  margin-left: 6px;
+  width: calc(50% - 6px);
+}
+
+.date-range-field{
+
+  width: 100%;
+}
+
+.substitute-field{
+
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.document-field{
+
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.extra-info-field{
+
+  width: 100%;
+}
+
+::ng-deep .mat-cell {
+
+  padding: 0px;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+::ng-deep .mat-sort-header-container {
+  justify-content: center !important;
+}
+

@@ -1,0 +1,60 @@
+<div class="request-list-wrapper">
+
+  <mat-select panelClass="request-type-selector-panel" class="request-type-selector flex" [(value)]="defaultTypeOption" (selectionChange)="this.changeTypeFilter($event.value)">
+    <mat-option [value]="'ALL'"><span>Request type: All</span></mat-option>
+    <mat-option [value]="'Rest Holiday'"><span>Request type: Rest</span></mat-option>
+    <mat-option [value]="'Special Holiday'"><span>Request type: Special</span></mat-option>
+    <mat-option [value]="'Unpaid Holiday'"><span>Request type: Unpaid</span></mat-option>
+  </mat-select>
+
+  <mat-select panelClass="request-type-selector-panel" class="request-type-selector flex" [(value)]="defaultStatusOption" (selectionChange)="this.changeStatusFilter($event.value)">
+    <mat-option [value]="'ALL'"><span>Request Status: All</span></mat-option>
+    <mat-option [value]="'PENDING'"><span>Request status: Pending</span></mat-option>
+    <mat-option [value]="'APPROVED'"><span>Request status: Approved</span></mat-option>
+    <mat-option [value]="'DECLINED'"><span>Request status: Declined</span></mat-option>
+    <mat-option [value]="'EXTRA_INFO'"><span>Request status: Sent back for extra info</span></mat-option>
+  </mat-select>
+
+  <table mat-table matSort (matSortChange)="announceSortChange($event)" [dataSource]="teamRequestList" id={{this.tableId}}>
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by first name">First Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by last name">Last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by start date">Start date</th>
+      <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by end date">End date</th>
+      <td mat-cell *matCellDef="let element">{{element.endDate}}</td>
+    </ng-container>
+    <ng-container matColumnDef="type" >
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">{{element.type}}</td>
+    </ng-container>
+    <ng-container matColumnDef="status" >
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">{{element.status}}</td>
+    </ng-container>
+    <ng-container matColumnDef="show" >
+      <th mat-header-cell *matHeaderCellDef>Show</th>
+      <td mat-cell *matCellDef="let element">
+        <button id="eye-btn" class="btn-drop-down wrapper-btn-eye flex" (click)="toggleShowTeamRequest(element)">
+          <mat-icon *ngIf="!requestIsCurrentlySelected(element)" class="show-btn-on">visibility</mat-icon>
+          <mat-icon *ngIf="requestIsCurrentlySelected(element)" class="show-btn-off">visibility_off</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+
+  <!--  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
+
+</div>
+

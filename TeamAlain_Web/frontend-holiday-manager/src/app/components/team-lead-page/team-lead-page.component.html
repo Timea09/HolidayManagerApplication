@@ -1,0 +1,73 @@
+<app-navbar (onNewNotification)="loadLists()"></app-navbar>
+
+<header>
+  <app-employee-header [daysLeft]=daysLeft [title]="'Team Lead Dashboard'"></app-employee-header>
+</header>
+
+<main>
+
+  <h2>Your Requests:</h2>
+
+  <app-request-list
+    (onRequestListTypeSelectionChange)="setUserRequestList($event);notifySelectionChanged($event)"
+    (onShowButtonPressed)="setSelectedUserRequest($event)"
+    [requestList]="userRequestList"
+    [columnsToDisplay]="['startDate', 'endDate', 'type', 'update']"
+    [selectedRequest]="selectedUserRequest">
+
+  </app-request-list>
+
+  <section class="employee-save-request-form">
+    <app-team-lead-save-request
+      (onCreateRequest)="makeRequest($event)"
+      (onCancelRequest)="cancelRequest($event)"
+      [selectedRequest]="selectedUserRequest"
+      (onUpdateRequest)="updateRequest($event)"
+      [requestType]="requestType">
+    </app-team-lead-save-request>
+  </section>
+
+  <br>
+  <hr>
+  <br>
+
+  <h2>Team's Requests:</h2>
+  <app-team-requests-list
+    [teamRequestList]="teamRequestList"
+    [tableId]="'team-request-table'"
+    (onTeamRequestListStatusSelectionChange)="setTeamRequestList($event)"
+    (onShowTeamRequestButtonPressed)="setSelectedTeamRequest($event)">
+
+  </app-team-requests-list>
+  <button mat-button class="download-btn" (click)="downloadReport()">Download Team Report</button>
+
+
+  <section class="team-lead-request-view">
+    <app-team-request-view
+      *ngIf="selectedTeamRequest !== null"
+      [shownRequest]="selectedTeamRequest!"
+      (onRequestStatusSet)="setTeamRequestStatus($event)"></app-team-request-view>
+  </section>
+
+  <br>
+  <hr>
+  <br>
+
+  <section *ngIf="rawRequestList !== null">
+    <h2>Substitute Team's Requests:</h2>
+
+    <app-team-requests-list
+      [teamRequestList]="substituteTeamRequestList"
+      [tableId]="'substitute-team-request-table'"
+      (onTeamRequestListStatusSelectionChange)="setSubstituteTeamRequestList($event)"
+      (onShowTeamRequestButtonPressed)="setSelectedSubstituteTeamRequest($event)"></app-team-requests-list>
+
+    <section class="team-lead-request-view">
+      <app-team-request-view
+        *ngIf="selectedSubstituteTeamRequest !== null"
+        [shownRequest]="selectedSubstituteTeamRequest!"
+        (onRequestStatusSet)="setSubstituteTeamRequestStatus($event)"></app-team-request-view>
+    </section>
+  </section>
+
+</main>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="liquibase/20220802-users-changelog.xml"/>
+    <include file="liquibase/20220802-teams-changelog.xml"/>
+    <include file="liquibase/20220802-holidays-changelog.xml"/>
+    <include file="liquibase/20220802-rest_holidays-changelog.xml"/>
+    <include file="liquibase/20220802-special_holidays-changelog.xml"/>
+    <include file="liquibase/20220802-unpaid_holidays-changelog.xml"/>
+    <include file="liquibase/20220802-requests-changelog.xml"/>
+    <include file="liquibase/20220802-teams-constraints-changelog.xml"/>
+    <include file="liquibase/20220802-users-constraints-changelog.xml"/>
+    <include file="liquibase/20220802-requests-constraints-changelog.xml"/>
+    <include file="liquibase/20220802-holidays-constraints-changelog.xml"/>
+    <include file="liquibase/20220806-users-constraints-changelog.xml"/>
+    <include file="liquibase/20220807-users-role-changelog.xml"/>
+    <include file="liquibase/20220808-users-daysLeft-changelog.xml"/>
+    <include file="liquibase/20220808-requests-status-changelog.xml"/>
+    <include file="liquibase/20220808-users-constraints-changelog.xml"/>
+    <include file="liquibase/20220816-notifications-changelog.xml"/>
+    <include file="liquibase/20220817-notifications-add-column-changelog.xml"/>
+    <include file="liquibase/20220818-special-holidays-add-column-changelog.xml"/>
+    <include file="liquibase/20220822-substitute-periods-changelog.xml"/>
+    <include file="liquibase/20220823-notification-constraint-changelog.xml"/>
+    <include file="liquibase/20220830-insert-into-users-changelog.xml"/>
+    <include file="liquibase/20220831-insert-into-teams-changelog.xml"/>
+    <include file="liquibase/20220831-update-users-changelog.xml"/>
+    <include file="liquibase/20220831-insert-into-holidays-changelog.xml"/>
+    <include file="liquibase/20220831-insert-into-rest-holidays-changelog.xml"/>
+    <include file="liquibase/20220831-insert-into-requests-changelog.xml"/>
+    <include file="liquibase/20220831-insert-into-substitute-periods-changelog.xml"/>
+
+</databaseChangeLog>

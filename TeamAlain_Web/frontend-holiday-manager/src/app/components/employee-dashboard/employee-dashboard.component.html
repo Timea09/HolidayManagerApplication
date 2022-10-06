@@ -1,0 +1,33 @@
+<app-navbar (onNewNotification)="onNotify()"></app-navbar>
+
+<header>
+    <app-employee-header [daysLeft] = daysLeft [title]="'Employee Dashboard'"></app-employee-header>
+</header>
+
+<main>
+
+  <app-request-list
+    (onRequestListTypeSelectionChange)="setRequestList($event);notifySelectionChanged($event)"
+    (onShowButtonPressed)="setSelectedRequest($event)"
+    [requestList]="requestList"
+    [columnsToDisplay]="['startDate', 'endDate', 'type', 'status', 'update']"
+    [selectedRequest]="selectedRequest">
+
+  </app-request-list>
+
+
+  <section class="employee-save-request-form">
+      <app-employee-save-request
+        (onCreateRequest)="makeRequest($event)"
+        (onUpdateRequest)="updateRequest($event)"
+        (onCancelRequest)="cancelRequest($event)"
+        [selectedRequest]="selectedRequest"
+        [usedRangeDates]="usedRangeDates"
+        [requestType]="requestType"
+
+      >
+
+      </app-employee-save-request>
+  </section>
+
+</main>

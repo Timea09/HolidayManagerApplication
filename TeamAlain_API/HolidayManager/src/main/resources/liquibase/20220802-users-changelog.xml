@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20220802-users-001" author="dmihaila">
+        <createTable tableName="USERS">
+            <column name="USER_ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR(80)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_NAME" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ROLE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEPARTMENT" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DAYS_LEFT" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEAM_ID" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

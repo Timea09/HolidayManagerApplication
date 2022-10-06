@@ -1,0 +1,56 @@
+@import "src/variables";
+
+
+@media(max-width: 768px)
+{
+    .form-body{
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+
+    .add-button
+    {
+        background-color: $mhp-green;
+        width:200px;
+        margin-bottom: 6px;
+
+
+    }
+    .button-same-line
+    {
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        margin-right: 20px;
+
+    }
+    .delete-button button
+    {
+        margin-left: 20px;
+        background-color: $mhp-royal-blue;
+        width: 100px;
+        margin-bottom: 6px;
+        // margin-top: -40px;
+        // margin-right: 20px;
+    }
+    .update-button button
+    {
+        background-color: $mhp-yellow;
+        width:200px;
+        margin-bottom: 6px;
+
+
+    }
+    // .bottom-buttons
+    // {
+    //     margin-bottom: 10px;
+    // }
+
+}
+
+
+

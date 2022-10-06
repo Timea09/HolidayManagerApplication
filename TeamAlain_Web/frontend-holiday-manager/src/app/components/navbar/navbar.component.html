@@ -1,0 +1,45 @@
+<nav class="navbar">
+
+  <div class="bar-subsection">
+    <button *ngIf="checkShowBack()" mat-icon-button (click)="goBack()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+
+    <button *ngIf="!checkShowBack()" mat-icon-button disabled>
+      <mat-icon></mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="checkShowChangePassword()" (click)="goChangePassword()">
+      <mat-icon>lock</mat-icon>
+    </button>
+
+    <button *ngIf="!checkShowChangePassword()" mat-icon-button disabled>
+      <mat-icon></mat-icon>
+    </button>
+
+
+  </div>
+
+  <div class="bar-subsection">
+    <span>{{userEmail}}</span>
+  </div>
+
+  <div class="bar-subsection">
+    <button *ngIf="checkShowNotifications()" color="accent" mat-icon-button [matMenuTriggerFor]="menu" (click)="onReadNotifications()">
+      <mat-icon [matBadge]="this.notifications.length" matBadgeSize="small"  [matBadgeHidden]="this.notifications.length === 0 || this.hasBeenPressed===true" >notifications</mat-icon>
+    </button>
+    <button *ngIf="!checkShowNotifications()" mat-icon-button disabled>
+      <mat-icon></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="wrap">
+      <button class="notification-btn" *ngFor="let notification of notifications">
+        <p class="text-wrap">{{notification.message}}</p>
+      </button>
+      <button *ngIf="notifications.length === 0" mat-menu-item>No notifications available!</button>
+    </mat-menu>
+
+    <button mat-icon-button (click)="signOut()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
+</nav>

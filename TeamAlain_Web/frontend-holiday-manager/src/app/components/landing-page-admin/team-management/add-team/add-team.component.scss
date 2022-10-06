@@ -1,0 +1,37 @@
+
+
+form{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+.mat-raised-button{
+  background-color:#78bb54;
+}
+
+.mat-option:nth-child(even){
+  background-color: #ffffff;
+}
+
+.mat-option:nth-child(odd){
+  background-color: #f1f1f1;
+}
+::ng-deep .mat-simple-snackbar {
+
+  .mat-button-wrapper {
+
+    color: #46a35e;
+  }
+}
+
+.mat-list {
+  overflow: auto;
+  max-height: 250px;
+}
+.first-form{
+  padding-top: 40px;
+}

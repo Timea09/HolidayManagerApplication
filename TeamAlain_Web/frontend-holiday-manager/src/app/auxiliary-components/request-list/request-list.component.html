@@ -1,0 +1,46 @@
+<div class="request-list-wrapper">
+
+  <mat-select panelClass="request-type-selector-panel" class="request-type-selector flex" [(value)]="defaultOption" (selectionChange)="this.changeType($event.value)">
+    <mat-option [value]="'ALL'"><span>All requests</span></mat-option>
+    <mat-option [value]="'REST'"><span>Rest holiday requests</span></mat-option>
+    <mat-option [value]="'SPECIAL'"><span>Special holiday requests</span></mat-option>
+    <mat-option [value]="'UNPAID'"><span>Unpaid holiday requests</span></mat-option>
+  </mat-select>
+
+  <div class="table-wrapper">
+    <table class="request-list" mat-table matSort (matSortChange)="announceSortChange($event)" [dataSource]="requestList" id="request-table">
+      <ng-container matColumnDef="startDate" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by start date">Start date</th>
+        <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+      </ng-container>
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by end date">End date</th>
+        <td mat-cell *matCellDef="let element">{{element.endDate}}</td>
+      </ng-container>
+      <ng-container matColumnDef="type" >
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">{{element.type}}</td>
+      </ng-container>
+      <ng-container matColumnDef="status" >
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{(element.status === 'EXTRA_INFO') ? 'EXTRA INFO' : element.status}}</td>
+      </ng-container>
+      <ng-container matColumnDef="update" >
+        <th mat-header-cell *matHeaderCellDef>Update</th>
+        <td mat-cell *matCellDef="let element">
+            <button id="eye-btn" class="btn-drop-down wrapper-btn-eye flex" (click)="toggleShowRequest(element)">
+              <mat-icon *ngIf="!requestIsCurrentlySelected(element)" class="show-btn-on">visibility</mat-icon>
+              <mat-icon *ngIf="requestIsCurrentlySelected(element)" class="show-btn-off">visibility_off</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+  </div>
+
+
+  <!--  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
+
+</div>

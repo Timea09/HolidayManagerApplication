@@ -1,0 +1,93 @@
+<form [formGroup]="requestFormGroup">
+
+    <div class="wrapper-form-field">
+        <mat-form-field class="holiday-type-field form-field" appearance="fill">
+            <mat-label>Holiday type</mat-label>
+            <mat-select [(ngModel)]="selectedHolidayType" [ngModelOptions]="{standalone: true}" name="user-type"
+                >
+                <mat-option *ngFor="let type of holidayTypes" [value]="type.value">
+                    {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="wrapper-form-field">
+        <mat-form-field class="date-range-field" appearance="fill">
+            <mat-label>Choose a period</mat-label>
+            <!-- <mat-date-range-input [formGroup]="requestFormGroup" [rangePicker]="rangePicker" [min]="startDate " [dateFilter]="filterForPickedDays">
+              <input matStartDate formControlName="start_date" placeholder="Start date" readonly>
+              <input matEndDate formControlName="end_date" placeholder="End date" readonly>
+            </mat-date-range-input> -->
+
+            <mat-date-range-input #datePicker [formGroup]="requestFormGroup" [rangePicker]="rangePicker" [min]="startDate " [dateFilter]="filterForPickedDays">
+                <input matStartDate formControlName="start_date" placeholder="Start date" readonly>
+                <input matEndDate formControlName="end_date" placeholder="End date" readonly>
+              </mat-date-range-input>
+
+            <mat-hint>YYYY-MM-DD – YYYY-MM-DD</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #rangePicker></mat-date-range-picker>
+
+            <!-- invalid start date -->
+            <mat-error *ngIf="requestFormGroup.get('start_date')!.hasError('matDatepickerParse')">
+                is not a valid date!
+            </mat-error>
+            <mat-error *ngIf="requestFormGroup.get('start_date')!.hasError('matDatepickerMin')">
+                You cannot request a day off in the past!
+            </mat-error>
+            <!-- invalid end date -->
+            <mat-error *ngIf="requestFormGroup.get('end_date')!.hasError('matDatepickerParse')">
+                is not a valid date!
+            </mat-error>
+            <mat-error *ngIf="requestFormGroup.get('end_date')!.hasError('matDatepickerMin')">
+                You cannot request a day off in the past!
+            </mat-error>
+            <mat-error *ngIf="requestFormGroup.value.end_date === null" >
+                End date must not be null, if you want a 1 day request, please select the same date for start and end.
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="marginless-wrapper">
+        <mat-form-field class="substitute-field form-field" appearance="fill"
+            *ngIf='selectedHolidayType === "REST" || selectedHolidayType === "SPECIAL"'>
+            <mat-label>Substitute</mat-label>
+            <input matInput formControlName="substitute" placeholder="Substitute">
+        </mat-form-field>
+    </div>
+
+    <div class="wrapper-form-field">
+        <mat-form-field class="document-field form-field" appearance="fill" *ngIf="selectedHolidayType == 'SPECIAL'">
+            <mat-label>Document</mat-label>
+            <ngx-mat-file-input id="fileInput" formControlName="document" placeholder="Document" *ngIf="this.selectedRequest != null" [valuePlaceholder]="this.selectedRequest.documentName!"></ngx-mat-file-input>
+          <ngx-mat-file-input formControlName="document" placeholder="Document" *ngIf="this.selectedRequest == null" ></ngx-mat-file-input>
+
+          <button *ngIf="this.selectedRequest?.document !== null" mat-icon-button matSuffix (click)="downloadFile();$event.stopPropagation()" style="">
+            <mat-icon> vertical_align_bottom</mat-icon>
+          </button>
+        </mat-form-field>
+    </div>
+
+    <div class="wrapper-form-field" *ngIf="this.selectedRequest !== null">
+        <mat-form-field class="extra-info-field form-field" appearance="fill">
+            <mat-label>Extra Info</mat-label>
+            <textarea matInput formControlName="extra_info" placeholder="Extra Info" readonly></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="wrapper-footer">
+        <button mat-button class="btn create-btn" *ngIf="this.selectedRequest === null"
+            (click)="createRequest()">Create request
+        </button>
+        <div class="wrapper-btn-same-line">
+            <button mat-button class="btn cancel-btn" *ngIf="this.selectedRequest !== null" (click)="cancelRequest()"
+                [ngStyle]="{'width':!this.showUpdateButtonCondition()? '100%': '50%'}">Cancel request</button>
+            <button mat-button class="btn update-btn" *ngIf="this.showUpdateButtonCondition()"
+                (click)="updateRequest()">Update request</button>
+        </div>
+
+        <button mat-button class="btn hr-btn" *ngIf="checkShowHRButton()" (click)="sendToHr()">Send to HR</button>
+    </div>
+
+</form>

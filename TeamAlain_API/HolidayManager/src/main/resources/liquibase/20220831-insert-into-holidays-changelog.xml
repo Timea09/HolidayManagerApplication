@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="insert-into-holidays-changelog-001" author="dmihaila">
+        <insert
+                schemaName="public"
+                tableName="holidays">
+            <column  name="HOLIDAY_ID"  value="1"/>
+            <column  name="START_DATE"  value="2022-08-28"/>
+            <column  name="END_DATE"  value="2022-09-12"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

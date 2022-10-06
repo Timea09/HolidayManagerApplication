@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+<div class="bk"><header><h1>User administration</h1></header>
+    <!-- <div class="container">
+
+        <app-user-management-card
+            *ngFor="let user of users"
+            [user]=user >
+        </app-user-management-card>
+
+    </div>
+    -->
+    <!-- <form [formGroup]="updateFormGroup" (ngSubmit)="update()" >
+    <mat-form-field  appearance="legacy">
+
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="first name" value="{{formSource.firstName}}" formControlName="firstName" >
+        <mat-hint></mat-hint>
+    </mat-form-field>
+    <mat-form-field  appearance="legacy">
+
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="last name" value="{{formSource.lastName}}" formControlName="lastName" >
+        <mat-hint></mat-hint>
+    </mat-form-field>
+    <mat-form-field  appearance="legacy">
+
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="email" value="{{formSource.email}}" formControlName="email" >
+        <mat-hint></mat-hint>
+    </mat-form-field>
+    <mat-form-field  appearance="legacy">
+
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="password" value="{{formSource.password}}" formControlName="password" >
+        <mat-hint></mat-hint>
+    </mat-form-field>
+    <mat-form-field  appearance="legacy">
+
+        <mat-label>User type</mat-label>
+        <input matInput placeholder="user type" value="{{formSource.userType}}" formControlName="userType">
+        <mat-hint></mat-hint>
+    </mat-form-field>
+    <mat-form-field  appearance="legacy">
+
+        <mat-label>Department</mat-label>
+        <input matInput placeholder="department" value="{{formSource.department}}" formControlName="department">
+        <mat-hint></mat-hint>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="accent"  type="submit">Update</button>
+
+    </form> -->
+
+    <mat-list >
+        <mat-list-item *ngFor="let user of users" >
+
+          <p mat-line> <span>{{user.firstName}} {{user.lastName}}</span></p>
+          <div>
+            <button (click)="seeUser(user)" mat-icon-button color="basic">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteUser(user)" mat-icon-button color="basic">
+                <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+
+
+
+    <app-add-user  [userInfo]=this.userSelected  [userSelected]=this.selected (clickCancel)="cancel()"> </app-add-user>
+
+
+</div>
+
+
+
+
+
+
